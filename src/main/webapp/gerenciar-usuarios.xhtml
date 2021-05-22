@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template-admin.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form>
+        <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton icon="pi pi-file-o" actionListener="#{usuarioBean.novo()}"
+                                 value="Novo" update="@form"></p:commandButton>
+                
+                <p:commandButton icon="pi pi-save" actionListener="#{usuarioBean.salvar()}" 
+                                 value="Salvar" update="@form"
+                                 rendered="#{usuarioBean.estadoTela.name() != 'BUSCA'}"></p:commandButton>
+                
+                <p:commandButton icon="pi #{usuarioBean.estadoTela.name() == 'BUSCA'?'pi-searchS':'pi-undo'}" 
+                                 actionListener="#{usuarioBean.listar()}"
+                                 value="#{usuarioBean.estadoTela.name() == 'BUSCA'?'Pesquisar':'Voltar'}"
+                                 update="@form"></p:commandButton>
+            </p:toolbarGroup>
+        </p:toolbar>
+        <p:panelGrid columns="2" styleClass="ui-panelgrid-blank" id="gridDados" 
+                     rendered="#{usuarioBean.estadoTela.name() != 'BUSCA'}">
+            <p:outputLabel value="Nome"></p:outputLabel>
+            <p:inputText value="#{usuarioBean.entidade.nome}"></p:inputText>
+            <p:outputLabel value="Sobrenome"></p:outputLabel>
+            <p:inputText value="#{usuarioBean.entidade.sobrenome}"></p:inputText>
+            <p:outputLabel value="Login"></p:outputLabel>
+            <p:inputText value="#{usuarioBean.entidade.login}"></p:inputText>
+            <p:outputLabel value="Senha"></p:outputLabel>
+            <p:password value="#{usuarioBean.entidade.senha}"></p:password>
+            <p:outputLabel value="Email"></p:outputLabel>
+            <p:inputText value="#{usuarioBean.entidade.email}"></p:inputText>
+            
+        </p:panelGrid>
+        
+        <p:spacer height="30px"></p:spacer>
+        <p:dataTable value="#{usuarioBean.entidades}" var="u" id="tabelaResultados">
+            <p:column>
+                <p:commandButton value="Editar" actionListener="#{usuarioBean.editar(u)}"
+                                 update="@form"></p:commandButton>
+                <p:commandButton value="Deletar" actionListener="#{usuarioBean.deletar(u)}"
+                                 update="@form"></p:commandButton>
+            </p:column>
+            <p:column headerText="ID">
+                <h:outputText value="#{u.id}"></h:outputText>
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{u.nome}"></h:outputText>
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{u.email}"></h:outputText>
+            </p:column>
+            <p:column headerText="Data Cadastro">
+                <h:outputText value="#{u.dataCadastro}"></h:outputText>
+            </p:column>
+        </p:dataTable>
+        
+    </h:form>
+    
+</ui:composition>
+

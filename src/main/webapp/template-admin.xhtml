@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ecommerce IF</title>
+        <link href="resources/ecommerce/css/admin-theme.css" rel="stylesheet" />
+        <h:outputStylesheet library="ecommerce-if" name="css/admin-theme.css"></h:outputStylesheet>
+    </h:head>
+    <h:body class="aside-desktop-open">
+        <header>
+            <div class="logo">
+                <h:graphicImage library="ecommerce-if" name="imagens/logo.png"></h:graphicImage>
+            </div>
+            <div class="acoes">
+                <div class="acoes-direita">
+                    <a href="#" class="aside-toggle">=</a>
+                </div>
+                <div class="titulo">
+                    <h1>Cadastro de Usuários</h1>
+                </div>
+                <div class="acoes-esquerda">
+                    <a href="#">=</a>
+                </div>
+            </div>
+        </header>
+        <aside>
+            <ul class="navegacao">
+                <li><a class="ativo" href="index.xhtml">Dashboard</a></li>
+                <li>
+                    <a href="#" class="submenu">Cadastros\/</a>
+                    <ul>
+                        <li>
+                            <a href="gerenciar-usuarios.xhtml">Usuários</a>
+                        </li>
+                        <li><a href="#">Categorias</a></li>
+                        <li><a href="#">Clientes</a></li>
+                        <li><a href="#">Produtos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Vendas</a></li>
+                <li><a href="#">Finanças</a></li>
+                <li><a href="#">Estoque</a></li>
+                <li><a href="#">Relatórios</a></li>
+            </ul>
+        </aside>
+        <div class="overlay-aside"></div>
+        <main>
+            <p:messages showDetail="true">
+                <p:autoUpdate></p:autoUpdate>
+            </p:messages>
+            <p:growl showDetail="true">
+                <p:autoUpdate></p:autoUpdate>
+            </p:growl>
+            <ui:insert></ui:insert>
+        </main>
+        <footer>
+            <div>PPW2 2021 - TADS - IFTM - Paracatu</div>
+        </footer>
+        <h:outputScript library="ecommerce-if" name="js/admin-script.js"></h:outputScript>
+    </h:body>
+</html>
+

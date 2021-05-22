@@ -1,0 +1,211 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* prettier-ignore */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,
+address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,
+b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,
+tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,
+nav,output,ruby,section,summary,time,mark,audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* prettier-ignore */
+article,aside,details,figcaption,figure,footer,header,hgroup,
+menu,nav,section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+/* prettier-ignore */
+ol,ul {
+    list-style: none;
+}
+/* prettier-ignore */
+blockquote,q {
+    quotes: none;
+}
+/* prettier-ignore */
+blockquote:before,blockquote:after,q:before,q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* Fim reset CSS */
+
+/*Criação de variáveis*/
+:root {
+    --accent-color: #007acc;
+    --background-menu: #292d39;
+    --color-menu: #fff;
+    --height-header: 60px;
+    --width-aside: 250px;
+    --boder-footer: #999;
+    --transition-time: 0.3s;
+}
+html,
+body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--background-menu);
+    color: var(--color-menu);
+    height: var(--height-header);
+    display: flex;
+    z-index: 1100;
+}
+header .logo {
+    width: var(--width-aside);
+    justify-content: center;
+    display: flex;
+    flex: 0;
+    min-width: var(--width-aside);
+}
+header .logo img {
+    align-self: center;
+}
+header .acoes {
+    width: 100%;
+}
+header .acoes a {
+    min-width: 40px;
+    height: var(--height-header);
+    text-decoration: none;
+    line-height: var(--height-header);
+    text-align: center;
+    font-size: 1.4em;
+    color: var(--color-menu);
+    padding: 0 25px;
+    display: block;
+    transition: background var(--transition-time);
+}
+header .acoes a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+header .titulo {
+    float: left;
+    line-height: var(--height-header);
+    padding-left: 20px;
+    font-size: 1.2em;
+}
+header .acoes-direita {
+    float: left;
+}
+header .acoes-esquerda {
+    float: right;
+}
+aside {
+    background-color: var(--background-menu);
+    color: var(--color-menu);
+    width: var(--width-aside);
+    position: fixed;
+    left: calc(-1 * var(--width-aside));
+    margin-top: var(--height-header);
+    height: calc(100% - var(--height-header) * 2);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: left var(--transition-time);
+}
+
+aside .navegacao a {
+    text-decoration: none;
+    color: var(--color-menu);
+    display: block;
+    padding: 15px 10px;
+    transition: background var(--transition-time);
+}
+
+aside .navegacao li ul {
+    display: none;
+}
+
+aside .navegacao .expande ~ ul {
+    display: block;
+}
+
+aside .navegacao li ul li a {
+    padding-left: 20px;
+}
+aside .navegacao li ul li ul li a {
+    padding-left: 40px;
+}
+aside .navegacao li ul li ul li ul li a {
+    padding-left: 60px;
+}
+aside .navegacao a:hover {
+    background-color: var(--accent-color);
+}
+aside .navegacao a.ativo {
+    border-left: 3px solid var(--accent-color);
+}
+main {
+    flex: 1;
+    padding: 10px;
+    margin-left: var(--width-aside);
+    transition: margin var(--transition-time);
+}
+
+footer {
+    height: var(--height-header);
+    border-top: 1px solid var(--boder-footer);
+    padding-left: 20px;
+    line-height: var(--height-header);
+}
+
+.overlay-aside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+@keyframes overlay-open {
+    0% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        display: none;
+    }
+}
+@media only screen and (max-width: 768px) {
+    main {
+        margin-left: 0;
+    }
+    body.aside-mobile-open .overlay-aside {
+        display: block;
+        animation: overlay-open var(--transition-time);
+    }
+    body.aside-mobile-open aside {
+        left: 0;
+    }
+}
+@media only screen and (min-width: 769px) {
+    body.aside-desktop-open main {
+        margin-left: var(--width-aside);
+    }
+    main {
+        margin-left: 0;
+    }
+    body.aside-desktop-open aside {
+        left: 0;
+    }
+}
