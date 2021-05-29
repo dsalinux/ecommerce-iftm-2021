@@ -1,5 +1,6 @@
 package br.edu.iftm.ecommerce.bean;
 
+import java.util.Date;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -8,7 +9,11 @@ import javax.inject.Named;
 public class TesteBean extends JSFUtil{
     
     public void testar(){
-        addAviso("Sua aplicação foi testada com sucesso.");
+        long tempoFinal = new Date().getTime()+3000;
+        while(tempoFinal > new Date().getTime()) {
+            
+        }
+        addInfo("OK");
     }
     
 }

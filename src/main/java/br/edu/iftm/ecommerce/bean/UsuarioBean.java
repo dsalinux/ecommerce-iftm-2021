@@ -15,7 +15,7 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioLogic>{
     private UsuarioLogic logic;
 
     public UsuarioBean() {
-        setEntidade(new Usuario());
+        super(Usuario.class);
     }
         
     

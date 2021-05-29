@@ -9,8 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ecommerce IF</title>
-        <link href="resources/ecommerce/css/admin-theme.css" rel="stylesheet" />
         <h:outputStylesheet library="ecommerce-if" name="css/admin-theme.css"></h:outputStylesheet>
+        <h:outputStylesheet library="ecommerce-if" name="css/fontawesome-all.css"></h:outputStylesheet>
     </h:head>
     <h:body class="aside-desktop-open">
         <header>
@@ -19,34 +19,37 @@
             </div>
             <div class="acoes">
                 <div class="acoes-direita">
-                    <a href="#" class="aside-toggle">=</a>
+                    <a href="#" class="aside-toggle"><i class="fa fa-bars"></i></a>
                 </div>
                 <div class="titulo">
                     <h1>Cadastro de Usuários</h1>
                 </div>
                 <div class="acoes-esquerda">
-                    <a href="#">=</a>
+                    <a href="#">#</a>
                 </div>
             </div>
         </header>
         <aside>
             <ul class="navegacao">
-                <li><a class="ativo" href="index.xhtml">Dashboard</a></li>
+                <li><a class="ativo" href="index.xhtml">
+                        <i class="fa fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
                 <li>
-                    <a href="#" class="submenu">Cadastros\/</a>
+                    <a href="#" class="submenu"><i class="fa fa-file-alt"></i> Cadastros <i class="fa fa-angle-down"></i></a>
                     <ul>
                         <li>
-                            <a href="gerenciar-usuarios.xhtml">Usuários</a>
+                            <a href="gerenciar-usuarios.xhtml"><i class="fa fa-user"></i> Usuários</a>
                         </li>
-                        <li><a href="#">Categorias</a></li>
-                        <li><a href="#">Clientes</a></li>
-                        <li><a href="#">Produtos</a></li>
+                        <li><a href="#"><i class="fa fa-tags"></i> Categorias</a></li>
+                        <li><a href="#"><i class="fa fa-user-friends"></i> Clientes</a></li>
+                        <li><a href="#"><i class="fa fa-box"></i> Produtos</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Vendas</a></li>
-                <li><a href="#">Finanças</a></li>
-                <li><a href="#">Estoque</a></li>
-                <li><a href="#">Relatórios</a></li>
+                <li><a href="#"><i class="fa fa-cart-arrow-down"></i> Vendas</a></li>
+                <li><a href="#"><i class="fa fa-cash-register"></i> Finanças</a></li>
+                <li><a href="#"><i class="fa fa-boxes"></i> Estoque</a></li>
+                <li><a href="#"><i class="fa fa-clipboard-list"></i> Relatórios</a></li>
             </ul>
         </aside>
         <div class="overlay-aside"></div>
@@ -57,7 +60,17 @@
             <p:growl showDetail="true">
                 <p:autoUpdate></p:autoUpdate>
             </p:growl>
+            
             <ui:insert></ui:insert>
+            
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <div class="p-text-center ajaxStatusEcommerce">
+                    <i class="pi pi-spinner pi-spin" aria-hidden="true"></i>
+                    Processando...
+                </div>
+            </p:dialog>
         </main>
         <footer>
             <div>PPW2 2021 - TADS - IFTM - Paracatu</div>

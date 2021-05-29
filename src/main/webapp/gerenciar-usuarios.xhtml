@@ -16,7 +16,7 @@
                                  value="Salvar" update="@form"
                                  rendered="#{usuarioBean.estadoTela.name() != 'BUSCA'}"></p:commandButton>
                 
-                <p:commandButton icon="pi #{usuarioBean.estadoTela.name() == 'BUSCA'?'pi-searchS':'pi-undo'}" 
+                <p:commandButton icon="pi #{usuarioBean.estadoTela.name() == 'BUSCA'?'pi-search':'pi-undo'}" 
                                  actionListener="#{usuarioBean.listar()}"
                                  value="#{usuarioBean.estadoTela.name() == 'BUSCA'?'Pesquisar':'Voltar'}"
                                  update="@form"></p:commandButton>
@@ -38,7 +38,8 @@
         </p:panelGrid>
         
         <p:spacer height="30px"></p:spacer>
-        <p:dataTable value="#{usuarioBean.entidades}" var="u" id="tabelaResultados">
+        <p:dataTable value="#{usuarioBean.entidades}" var="u" id="tabelaResultados"
+                     rendered="#{usuarioBean.estadoTela.name() == 'BUSCA'}">
             <p:column>
                 <p:commandButton value="Editar" actionListener="#{usuarioBean.editar(u)}"
                                  update="@form"></p:commandButton>
