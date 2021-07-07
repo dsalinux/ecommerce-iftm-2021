@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="crudBean" displayName="Insira aqui o bean com o crud." required="true"></cc:attribute>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton icon="pi pi-file-o" actionListener="#{cc.attrs.crudBean.novo()}"
+                                 value="Novo" update="@form"></p:commandButton>
+
+                <p:commandButton icon="pi pi-save" actionListener="#{cc.attrs.crudBean.salvar()}" 
+                                 value="Salvar" update="@form"
+                                 rendered="#{cc.attrs.crudBean.estadoTela.name() != 'BUSCA'}"></p:commandButton>
+
+                <p:commandButton icon="pi #{cc.attrs.crudBean.estadoTela.name() == 'BUSCA'?'pi-search':'pi-undo'}" 
+                                 actionListener="#{cc.attrs.crudBean.listar()}"
+                                 value="#{cc.attrs.crudBean.estadoTela.name() == 'BUSCA'?'Pesquisar':'Voltar'}"
+                                 update="@form"></p:commandButton>
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
+                <cc:insertChildren></cc:insertChildren>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </cc:implementation>
+</html>

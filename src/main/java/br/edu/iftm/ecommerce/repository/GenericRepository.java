@@ -32,6 +32,12 @@ public abstract class GenericRepository<E, ID extends Serializable> implements S
         em.close();
     }
     
+    public E buscarPorID(ID id){
+        EntityManager em = getEntityManager();
+        E entidade = em.find(classe, id);
+        return entidade;
+    }
+    
     public List<E> listar() {
         EntityManager em = getEntityManager();
 

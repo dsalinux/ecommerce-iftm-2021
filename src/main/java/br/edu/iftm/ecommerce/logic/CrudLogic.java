@@ -9,7 +9,7 @@ public interface CrudLogic<E> extends Serializable {
     
     E salvar(E entidade) throws ErroNegocioException, ErroSistemaException;
     void deletar(E entidade) throws ErroNegocioException, ErroSistemaException;
-    void buscarPorId(E entidade) throws ErroNegocioException, ErroSistemaException;
+    E buscarPorId(E entidade) throws ErroNegocioException, ErroSistemaException;
     List<E> buscar(E entidade) throws ErroNegocioException, ErroSistemaException;
     
 }

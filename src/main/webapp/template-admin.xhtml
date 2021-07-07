@@ -11,6 +11,7 @@
         <title>Ecommerce IF</title>
         <h:outputStylesheet library="ecommerce-if" name="css/admin-theme.css"></h:outputStylesheet>
         <h:outputStylesheet library="ecommerce-if" name="css/fontawesome-all.css"></h:outputStylesheet>
+        <h:outputStylesheet library="ecommerce-if" name="css/primeflex.min.css" />
     </h:head>
     <h:body class="aside-desktop-open">
         <header>
@@ -22,7 +23,7 @@
                     <a href="#" class="aside-toggle"><i class="fa fa-bars"></i></a>
                 </div>
                 <div class="titulo">
-                    <h1>Cadastro de Usuários</h1>
+                    <h1>#{empty tituloTemplate?'Eccomerce IF':tituloTemplate}</h1>
                 </div>
                 <div class="acoes-esquerda">
                     <a href="#">#</a>
@@ -43,7 +44,8 @@
                         </li>
                         <li><a href="#"><i class="fa fa-tags"></i> Categorias</a></li>
                         <li><a href="#"><i class="fa fa-user-friends"></i> Clientes</a></li>
-                        <li><a href="#"><i class="fa fa-box"></i> Produtos</a></li>
+                        <li><a href="gerenciar-marca.xhtml"><i class="fas fa-bookmark"></i> Marca</a></li>
+                        <li><a href="gerenciar-produtos.xhtml"><i class="fa fa-box"></i> Produtos</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="fa fa-cart-arrow-down"></i> Vendas</a></li>
@@ -63,7 +65,7 @@
             
             <ui:insert></ui:insert>
             
-            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+            <p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()"/>
 
             <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
                 <div class="p-text-center ajaxStatusEcommerce">
@@ -73,7 +75,7 @@
             </p:dialog>
         </main>
         <footer>
-            <div>PPW2 2021 - TADS - IFTM - Paracatu</div>
+            <p>PPW2 2021 - TADS - IFTM - Paracatu</p>
         </footer>
         <h:outputScript library="ecommerce-if" name="js/admin-script.js"></h:outputScript>
     </h:body>

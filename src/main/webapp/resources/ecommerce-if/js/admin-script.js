@@ -19,6 +19,6 @@ document
   );
 isMobile = () => {
   return (
-    Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 768
+    Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 769
   );
 };

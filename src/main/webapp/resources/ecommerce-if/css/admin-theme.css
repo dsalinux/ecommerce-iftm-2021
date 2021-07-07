@@ -25,6 +25,7 @@ menu,nav,section {
 }
 body {
     line-height: 1;
+    font-family: sans-serif;
 }
 /* prettier-ignore */
 ol,ul {
@@ -62,6 +63,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    background: var(--background-menu);
 }
 
 header {
@@ -69,7 +71,7 @@ header {
     color: var(--color-menu);
     height: var(--height-header);
     display: flex;
-    z-index: 1100;
+    z-index: 100;
 }
 header .logo {
     width: var(--width-aside);
@@ -115,7 +117,7 @@ aside {
     background-color: var(--background-menu);
     color: var(--color-menu);
     width: var(--width-aside);
-    position: fixed;
+    position: absolute;
     left: calc(-1 * var(--width-aside));
     margin-top: var(--height-header);
     height: calc(100% - var(--height-header) * 2);
@@ -130,6 +132,9 @@ aside .navegacao a {
     display: block;
     padding: 15px 10px;
     transition: background var(--transition-time);
+}
+aside .navegacao a[href="#"] {
+    color: #666;
 }
 
 aside .navegacao li ul {
@@ -160,13 +165,15 @@ main {
     padding: 10px;
     margin-left: var(--width-aside);
     transition: margin var(--transition-time);
+    background: white;
 }
 
 footer {
     height: var(--height-header);
     border-top: 1px solid var(--boder-footer);
     padding-left: 20px;
-    line-height: var(--height-header);
+    line-height: calc(var(--height-header) - 1px);
+        background: white;
 }
 
 .overlay-aside {

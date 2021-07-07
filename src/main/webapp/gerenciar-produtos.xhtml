@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ec="http://xmlns.jcp.org/jsf/composite/eccomp"
+      template="template-admin.xhtml">
+    
+    <ui:param name="tituloTemplate" value="Gerenciar Produtos"></ui:param>
+    
+    <h:form>
+        <ec:toolbar crudBean="#{produtoBean}"></ec:toolbar>
+        
+        <p:panelGrid columns="2" styleClass="ui-panelgrid-blank" id="gridDados" 
+                     rendered="#{produtoBean.estadoTela.name() != 'BUSCA'}">
+            <p:outputLabel for="nomeid" value="Nome"></p:outputLabel>
+            <p:inputText id="nomeid" value="#{produtoBean.entidade.nome}"></p:inputText>
+            <p:outputLabel for="descricaoid" value="Descrição"></p:outputLabel>
+            <p:inputTextarea id="descricaoid" value="#{produtoBean.entidade.descricao}"></p:inputTextarea>
+            <p:outputLabel for="marcaid" value="Marca"></p:outputLabel>
+            <p:selectOneMenu id="marcaid" value="#{produtoBean.entidade.marca}">
+                <f:selectItem itemLabel="Selecione"></f:selectItem>
+                <f:selectItems value="#{produtoBean.marcas}" var="m" itemLabel="#{m.nome}" itemValue="#{m}"></f:selectItems>
+            </p:selectOneMenu>
+            <p:outputLabel for="valorid" value="Valor"></p:outputLabel>
+            <p:inputNumber id="valorid" value="#{produtoBean.entidade.valor}" 
+                           decimalSeparator="," thousandSeparator="."
+                           symbol="R$ " symbolPosition="p"></p:inputNumber>
+            <p:outputLabel for="detalhesid" value="Detalhes"></p:outputLabel>
+            <p:textEditor id="detalhesid" height="300" value="#{produtoBean.entidade.detalhes}"></p:textEditor>
+            <p:outputLabel value="Imagens do produto"></p:outputLabel>
+            <ec:selecaoImagem value="#{produtoBean.entidade.imagens}" update="imagensCarregas"></ec:selecaoImagem>
+            <h:panelGroup id="imagensCarregas">
+                <p:repeat value="#{produtoBean.entidade.imagens}" var="imagem" varStatus="status">
+                    <h:graphicImage url="imagens?codigo=#{imagem.codigo}" style="height: 30px"></h:graphicImage>
+                </p:repeat>
+            </h:panelGroup>
+        </p:panelGrid>
+        
+        <p:spacer height="30px"></p:spacer>
+        <p:dataTable value="#{produtoBean.entidades}" var="e" id="tabelaResultados"
+                     rendered="#{produtoBean.estadoTela.name() == 'BUSCA'}">
+            <p:column>
+                <p:commandButton value="Editar" actionListener="#{produtoBean.editar(e)}"
+                                 update="@form"></p:commandButton>
+                <p:commandButton value="Deletar" actionListener="#{produtoBean.deletar(e)}"
+                                 update="@form"></p:commandButton>
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{e.nome}"></h:outputText>
+            </p:column>
+            <p:column headerText="Marca">
+                <h:outputText value="#{e.marca.nome}"></h:outputText>
+            </p:column>
+            <p:column headerText="Valor">
+                <h:outputText value="#{e.valor}">
+                    <f:convertNumber currencyCode="BRL" type="currency" minFractionDigits="2"></f:convertNumber>
+                </h:outputText>
+            </p:column>
+            <p:column headerText="Data Criação">
+                <h:outputText value="#{e.dataCriacao}">
+                    <f:convertDateTime dateStyle="short" ></f:convertDateTime>
+                </h:outputText>
+            </p:column>
+        </p:dataTable>
+        
+    </h:form>
+    
+</ui:composition>
+

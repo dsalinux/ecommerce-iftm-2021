@@ -32,8 +32,9 @@ public class UsuarioLogic implements CrudLogic<Usuario>{
     }
 
     @Override
-    public void buscarPorId(Usuario entidade) throws ErroNegocioException, ErroSistemaException {
-        
+    public Usuario buscarPorId(Usuario entidade) throws ErroNegocioException, ErroSistemaException {
+        entidade = this.repository.buscarPorID(entidade.getId());
+        return entidade;
     }
 
     @Override
