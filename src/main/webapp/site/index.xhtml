@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template-site.xhtml">
+
+    <style>
+        .banner {
+            height: 30vh;
+            background:url('#{resource['ecommerce-if/imagens/banner.webp']}');
+            background-position: 50%;
+            background-size: cover;
+        }
+        .sombraTexto { 
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+        }
+    </style>
+    <section class="banner container-fluid  ">
+        <div class="row">
+            <div class="text-center col mx-auto align-items-center">
+                <div class="text-white sombraTexto">
+                    <h1><i class="fa fa-box-open"></i> </h1>
+                    <h1 class="fw-light">Faça compras online com qualidade e segurança.</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h:form>
+        <div class="album py-5 bg-light">
+                <div class="container">
+
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <ui:repeat value="#{produtoSiteBean.produtos}" var="produto">
+                            <div class="col">
+                                <div class="card shadow-sm">
+
+                                    <h:graphicImage library="ecommerce-if" name="imagens/sem-imagem.jpg"></h:graphicImage>
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">#{produto.nome}</h5>
+                                        <p class="card-text">#{produto.descricao}</p>
+                                        <div class="d-grid">
+                                            <button type="button" class="btn btn-sm btn-success d-md-block">Adicionar ao carrinho</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+
+                    </div>
+                </div>
+            </div>
+        
+    </h:form>
+
+</ui:composition>
+

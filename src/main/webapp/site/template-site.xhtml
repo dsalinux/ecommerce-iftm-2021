@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Ecommerce IF - Bootstrap 5</title>
+        <!-- Bootstrap core CSS -->
+        <h:outputStylesheet library="ecommerce-if" name="css/bootstrap.min.css"></h:outputStylesheet>
+        <h:outputStylesheet library="ecommerce-if" name="css/fontawesome-all.css"></h:outputStylesheet>
+
+        <style>
+            html, body {
+                height: 100%;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            main { 
+                flex: 1
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+        <header>
+            <nav class="navbar navbar-dark navbar-expand-lg bg-dark shadow-sm">
+
+                <div class="container">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <h:graphicImage library="ecommerce-if" name="imagens/logo.png"></h:graphicImage>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sobre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Produtos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+
+            <ui:insert></ui:insert>
+
+
+
+        </main>
+
+        <footer class="text-muted py-5">
+            <div class="container">
+                <p class="float-end mb-1">
+                    <a href="#">Back to top</a>
+                </p>
+                <p class="mb-1">Sistema desenvolvido na disciplina de Programação para Web 2 - IFTM - Campus Paracatu!</p>
+                <p class="mb-0">Conheça o Instituto Federal do Triângulo Mineiro <a href="http://www.iftm.edu.br" target="_blank">www.iftm.edu.br</a>.</p>
+            </div>
+        </footer>
+
+        <h:outputScript library="ecommerce-if" name="js/bootstrap.bundle.min.js"></h:outputScript>
+
+
+    </h:body>
+
+</html>
+
